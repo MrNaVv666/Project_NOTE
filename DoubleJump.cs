@@ -11,14 +11,17 @@ public class DoubleJump : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform playerRotatorStartingPos;
     [SerializeField] private LayerMask groundMask;
+    private RigidBody3D playerRigidBody;
 
-    public float gravity = -10f;
     private float groundDistance = 0.4f;
     private float jumpHeight = 3f;
 
     bool isGrounded;
-    public Vector3 velocity;
 
+    void Awake()
+    {
+        playerRigidBody = GetComponent<Rigidbody3D>;
+    }
 
 
     void Start()
@@ -28,24 +31,17 @@ public class DoubleJump : MonoBehaviour
 
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        PlayerJump();
+    }
 
-        if (isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
-        }
+    private void PlayerJump()
+    {
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            Debug.Log(velocity.y);
-            Debug.Log(isGrounded);
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            playerRigidBody.velocity = new Vector3(0, jumpHeight, 0);
         }
-
-        velocity.y += gravity * Time.deltaTime;
-
-        controller.Move(velocity * Time.deltaTime);
     }
-
 }
