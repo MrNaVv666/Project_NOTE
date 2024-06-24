@@ -7,7 +7,6 @@ public class DoubleJump : MonoBehaviour
 {
 
     [SerializeField] private GameObject playerBody;
-    [SerializeField] private CharacterController controller;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform playerRotatorStartingPos;
     [SerializeField] private LayerMask groundMask;
