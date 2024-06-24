@@ -10,7 +10,7 @@ public class DoubleJump : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform playerRotatorStartingPos;
     [SerializeField] private LayerMask groundMask;
-    private RigidBody3D playerRigidBody;
+    private RigidBody3D playerRigidbody;
 
     private float groundDistance = 0.4f;
     private float jumpHeight = 3f;
@@ -19,7 +19,7 @@ public class DoubleJump : MonoBehaviour
 
     void Awake()
     {
-        playerRigidBody = GetComponent<Rigidbody3D>;
+        playerRigidbody = GetComponent<Rigidbody3D>;
     }
 
 
@@ -40,7 +40,7 @@ public class DoubleJump : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            playerRigidBody.velocity = new Vector3(0, jumpHeight, 0);
+            playerRigidbody.velocity = new Vector3(0, jumpHeight, 0);
         }
     }
 }
