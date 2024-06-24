@@ -21,12 +21,16 @@ public class Movement : MonoBehaviour
 
     private float dashCounter;
     private float dashCoolCounter;
+
+    void Awake()
+    {
+        controller = GetComponent<CharacterController>();
+    }
    
    
     void Start()
     {
        PlayerStartPosition();
-       controller = GetComponent<CharacterController>();
     }
 
     void Update()
