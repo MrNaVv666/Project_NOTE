@@ -13,7 +13,6 @@ public class Movement : MonoBehaviour
     //WalkingVariables
     private float speed = 25f;
     private float activeMovespeed;
-    private float direction;
 
     //DashVariables
     private float dashSpeed;
@@ -22,38 +21,32 @@ public class Movement : MonoBehaviour
 
     private float dashCounter;
     private float dashCoolCounter;
+
+    void Awake()
+    {
+        controller = GetComponent<CharacterController>();
+    }
    
    
     void Start()
     {
        PlayerStartPosition();
-       controller = GetComponent<CharacterController>();
     }
 
     void Update()
-    {
-        
-
-        
+    {          
         if (Input.GetKey(KeyCode.A))
         {
-            direction = 1f;
-            RotateFunction();
+            RotateFunction(1);
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            direction = -1f;
-            RotateFunction();
-        }
+            RotateFunction(-1);
+        }  
         else
         {
-            direction = 0f;
+            RotateFunction(0);
         }
-
-        
-
-        
-
     }
 
     private void PlayerStartPosition()
@@ -65,7 +58,7 @@ public class Movement : MonoBehaviour
 
     }
 
-    private void RotateFunction()
+    private void RotateFunction(int direction)
     {
         transform.Rotate(new Vector3(0f, direction * speed * Time.deltaTime, 0f));
     }
