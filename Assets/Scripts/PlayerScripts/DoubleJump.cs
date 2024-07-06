@@ -69,4 +69,11 @@ public class DoubleJump : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            print("NO ELO");
+        }
+    }
 }
