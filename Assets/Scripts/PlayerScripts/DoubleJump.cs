@@ -5,26 +5,25 @@ using UnityEngine;
 
 public class DoubleJump : MonoBehaviour
 {
+    //CharacterJumpingComponents
     [SerializeField] private CharacterController controller;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundMask;
 
+    //JumpingVariables
     private float gravity = -10f;
     private float groundDistance = 0.4f;
-    private float jumpHeight = 3f;
-
-    private float jumpDebugDelayTime = 0.5f;
-
-    private int consoleDebugJumpCounter;
-
+    private float jumpHeight = 3.3f;
     private bool isGrounded;
     private Vector3 velocity;
 
-
+    //DebugVariables
+    private float jumpDebugDelayTime = 0.5f;
+    private int consoleDebugJumpCounter;
 
     void Start()
     {
-        
+        //Does Nothing For Now
     }
 
     void Update()
@@ -55,7 +54,7 @@ public class DoubleJump : MonoBehaviour
         consoleDebugJumpCounter++;
         
         Debug.Log("                                                            " + "||" + consoleDebugJumpCounter + "====================" + consoleDebugJumpCounter + "=====================" + consoleDebugJumpCounter + "||");
-        Debug.Log("                                                                                          " + "Is " + "(" + velocity.y + ")" + " Units High");
+        Debug.Log("                                                                                          " + "Jumped (" + velocity.y + ") Units High");
         Debug.Log("                                                                                          " + "Is On The Ground: " + "|====" + isGrounded + "====|");
         Debug.Log("                                                            " + "||" + consoleDebugJumpCounter + "====================" + consoleDebugJumpCounter + "=====================" + consoleDebugJumpCounter + "||");
         Debug.Log("");
