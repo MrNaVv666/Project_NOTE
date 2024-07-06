@@ -46,6 +46,8 @@ public class DoubleJump : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+
+        LockPosition();
     }
 
     private IEnumerator JumpDebug()
@@ -58,6 +60,13 @@ public class DoubleJump : MonoBehaviour
         Debug.Log("                                                                                          " + "Is On The Ground: " + "|====" + isGrounded + "====|");
         Debug.Log("                                                            " + "||" + consoleDebugJumpCounter + "====================" + consoleDebugJumpCounter + "=====================" + consoleDebugJumpCounter + "||");
         Debug.Log("");
+    }
+    private void LockPosition()
+    {
+        if ((gameObject.transform.position.x != 0) && (gameObject.transform.position.z != 0))
+        {
+            gameObject.transform.position = new Vector3(0, gameObject.transform.position.y, gameObject.transform.position.z);
+        }
     }
 
 }
